@@ -3,7 +3,13 @@ import cors from "cors"
 import products from "./product.js"
 
 const app=express()
-app.use(cors());
+app.use(cors(
+    {
+  origin: ["https://shop-cart-frontend.vercel.app"], 
+  methods: ["GET","POST"],
+  credentials: true
+}
+));
 app.use(express.json());
 
 const port =process.env.PORT || 3000
