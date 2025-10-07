@@ -4,7 +4,7 @@ import products from "./product.js"
 
 const app=express()
 app.use(cors(
-      {
+         {
         origin:["https://shop-cart-frontend.vercel.app"],
         methods:["POST","GET"],
         credentials:true
