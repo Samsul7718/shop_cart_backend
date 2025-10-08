@@ -36,7 +36,7 @@ app.post("/api/order", (req, res) => {
   res.json({ message: "Order received successfully!",products,total});
 });
 
-// app.listen(port,()=>{
-//     console.log(`Server run at http://localhost:${port}`)
-// })
-export default app;
+app.listen(port,()=>{
+    console.log(`Server run at http://localhost:${port}`)
+})
+// export default app;
