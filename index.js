@@ -3,9 +3,15 @@ import cors from "cors"
 import products from "./product.js"
 
 const app=express()
+
+
 app.use(cors(
     {
-  origin: ["https://shop-cart-frontend.vercel.app"], 
+  origin: [
+    "https://shop-cart-frontend.vercel.app",
+      "http://localhost:5173",
+       "http://localhost:5174"  
+  ], 
   methods: ["GET","POST"],
   credentials: true
 }
@@ -30,6 +36,7 @@ app.post("/api/order", (req, res) => {
   res.json({ message: "Order received successfully!",products,total});
 });
 
-app.listen(port,()=>{
-    console.log(`Server run at http://localhost:${port}`)
-})
+// app.listen(port,()=>{
+//     console.log(`Server run at http://localhost:${port}`)
+// })
+export default app;
