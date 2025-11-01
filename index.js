@@ -1,10 +1,14 @@
 import express from "express"
+const Razorpay = require("razorpay");
+require("dotenv").config();
+const path = require("path");
+const {validateWebhookSignature} = require("razorpay/dist/src/utils/razorpay-utils");
 import cors from "cors"
 import products from "./product.js"
 
 const app=express()
 
-
+app.set("view engine","ejs")
 app.use(cors(
     {
   origin: [
@@ -29,6 +33,10 @@ app.get("/api/product",(req,res)=>{
 })
 
 app.post("/api/order", (req, res) => {
+  const rozorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+  });
   console.log("Order endpoint hit");
   const { products,total } = req.body;
   console.log("Received Order:", products);
