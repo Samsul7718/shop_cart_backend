@@ -2,14 +2,14 @@ import express from "express";
 import Razorpay from "razorpay";
 import dotenv from "dotenv";
 dotenv.config();
-import path from "path";
+// import path from "path";
 // import { validateWebhookSignature } from "razorpay/dist/src/utils/razorpay-utils";
 import cors from "cors";
 import products from "./product.js"
 
 const app=express()
 
-app.set("view engine","ejs")
+// app.set("view engine","ejs")
 app.use(cors(
     {
   origin: [
