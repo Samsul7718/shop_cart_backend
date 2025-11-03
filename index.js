@@ -1,7 +1,7 @@
 import express from "express";
-import Razorpay from "razorpay";
-import dotenv from "dotenv";
-dotenv.config();
+// import Razorpay from "razorpay";
+// import dotenv from "dotenv";
+// dotenv.config();
 // import path from "path";
 // import { validateWebhookSignature } from "razorpay/dist/src/utils/razorpay-utils";
 import cors from "cors";
@@ -22,7 +22,13 @@ app.use(cors(
 }
 ));
 app.use(express.json());
-app.use(express.urlencoded({extended:false}))
+// app.use(express.urlencoded({extended:false}))
+
+// var corsOptions = {
+//   origin: "http://localhost:3000"
+// };
+
+// app.use(cors(corsOptions));
 
 const port =process.env.PORT || 3000
 
@@ -35,24 +41,24 @@ app.get("/api/product",(req,res)=>{
 })
 
 app.post("/api/order", async(req, res) => {
-  try {
-    const rozorpay = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID,
-      key_secret: process.env.RAZORPAY_KEY_SECRET,
-    });
-    const options =  req.body;
-    const order =await rozorpay.orders.create(options);
+  // try {
+    // const rozorpay = new Razorpay({
+      // key_id: process.env.RAZORPAY_KEY_ID,
+      // key_secret: process.env.RAZORPAY_KEY_SECRET,
+    // });
+    // const options =  req.body;
+    // const order =await rozorpay.orders.create(options);
 
-    if(!order){
-      return res.status(500).send("Some error occured");
-    }
+    // if(!order){
+      // return res.status(500).send("Some error occured");
+    // }
     res.json(order);
     
-  } catch (error) {
-    console.log(error);
-    res.status(500).send("Internal Server Error");
+  // } catch (error) {
+  //   console.log(error);
+  //   res.status(500).send("Internal Server Error");
     
-  }
+  // }
   console.log("Order endpoint hit");
   const { products,total } = req.body;
   console.log("Received Order:", products);
