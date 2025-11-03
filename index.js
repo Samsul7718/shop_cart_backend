@@ -1,9 +1,10 @@
-import express from "express"
-const Razorpay = require("razorpay");
-require("dotenv").config();
-const path = require("path");
-const {validateWebhookSignature} = require("razorpay/dist/src/utils/razorpay-utils");
-import cors from "cors"
+import express from "express";
+import Razorpay from "razorpay";
+import dotenv from "dotenv";
+dotenv.config();
+import path from "path";
+// import { validateWebhookSignature } from "razorpay/dist/src/utils/razorpay-utils";
+import cors from "cors";
 import products from "./product.js"
 
 const app=express()
@@ -52,12 +53,12 @@ app.post("/api/order", async(req, res) => {
     res.status(500).send("Internal Server Error");
     
   }
+  console.log("Order endpoint hit");
+  const { products,total } = req.body;
+  console.log("Received Order:", products);
+  console.log("Total Payble Amount:", total);
+  res.json({ message: "Order received successfully!",products,total});
 });
-  // console.log("Order endpoint hit");
-  // const { products,total } = req.body;
-  // console.log("Received Order:", products);
-  // console.log("Total Payble Amount:", total);
-  // res.json({ message: "Order received successfully!",products,total});
 // });
 
 app.listen(port,()=>{
