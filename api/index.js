@@ -5,7 +5,8 @@ import express from "express";
 // import path from "path";
 // import { validateWebhookSignature } from "razorpay/dist/src/utils/razorpay-utils";
 import cors from "cors";
-import products from "./product.js"
+import serverless from "serverless-http";
+import products from "../product.js"
 
 const app=express()
 
@@ -71,3 +72,4 @@ app.listen(port,()=>{
     console.log(`Server run at http://localhost:${port}`)
 })
 // export default app;
+export const handler = serverless(app);
