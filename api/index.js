@@ -56,8 +56,13 @@ app.post("/api/order", async(req, res) => {
   res.json({ message: "Order received successfully!",products,total});
 });
 
-app.listen(port,()=>{
-    console.log(`Server run at http://localhost:${port}`)
-})
+// app.listen(port,()=>{
+//     console.log(`Server run at http://localhost:${port}`)
+// })
 // export default app;
+
+if (process.env.NODE_ENV !== "production") {
+  const port = 3000;
+  app.listen(port, () => console.log(`Local API running`));
+}
 export const handler = serverless(app);
