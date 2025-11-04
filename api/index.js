@@ -8,7 +8,7 @@ const app=express()
 app.use(cors(
     {
   origin: [
-    "https://shop-cart-frontend.vercel.app/",
+    "https://shop-cart-frontend.vercel.app",
       "http://localhost:5173",
        "http://localhost:5174"  
 
