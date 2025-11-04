@@ -5,18 +5,31 @@ import products from "../product.js"
 
 const app=express()
 // app.use(cors({ origin: "*" }));
-app.use(cors(
-    {
-  origin: [
-    "https://shop-cart-frontend.vercel.app",
-      "http://localhost:5173",
-       "http://localhost:5174"  
+// app.use(cors(
+//     {
+//   origin: [
+//     "https://shop-cart-frontend.vercel.app",
+//       "http://localhost:5173",
+//        "http://localhost:5174"  
 
-  ], 
-  methods: ["GET","POST"],
+//   ], 
+//   methods: ["GET","POST"],
+//   credentials: true
+// }
+// ));
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS blocked: " + origin));
+    }
+  },
+  methods: ["GET", "POST"],
   credentials: true
-}
-));
+}));
 app.use(express.json());
 
 const port =process.env.PORT || 3000
