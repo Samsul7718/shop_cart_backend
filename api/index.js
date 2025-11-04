@@ -123,4 +123,5 @@ if (process.env.NODE_ENV !== "production") {
   app.listen(port, () => console.log("Local API running at http://localhost:3000"));
 }
 
-export const handler = serverless(app);
+// export const handler = serverless(app);
+export default serverless(app);
