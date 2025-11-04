@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors"
-import serverless from "serverless-http";
+// import serverless from "serverless-http";
 import products from "../product.js"
 
 const app=express()
@@ -77,4 +77,4 @@ app.post("/api/order", async(req, res) => {
 if (process.env.NODE_ENV !== "production") {
   app.listen(3000, () => console.log("Local API running"));
 }
-export const handler = serverless(app);
+// export const handler = serverless(app);
