@@ -11,6 +11,7 @@ app.use(cors(
     "https://shop-cart-frontend.vercel.app/",
       "http://localhost:5173",
        "http://localhost:5174"  
+
   ], 
   methods: ["GET","POST"],
   credentials: true
@@ -58,5 +59,5 @@ app.post("/api/order", async(req, res) => {
 app.listen(port,()=>{
     console.log(`Server run at http://localhost:${port}`)
 })
-// export default app;
+export default app;
 // export const handler = serverless(app);
